@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<h:form id="form1">
+		<h:panelGrid columns="2">
+			<h:outputLabel value="#{myDicEn.n}" />
+			<h:inputText value="#{employeManagedBean.emp.nomEmploye}" />
+			<h:outputLabel value="#{myDicEn.p}" />
+			<h:inputText value="#{employeManagedBean.emp.prenomEmploye}" />
+			<h:outputLabel value="#{myDicEn.d}" />
+			<h:inputText value="#{employeManagedBean.emp.dateNaissance}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText>
+			<h:outputLabel value="#{myDicEn.s}" />
+			<h:selectOneMenu value="#{employeManagedBean.emp.sexe}"
+				requiredMessage="H ou F">
+				<f:selectItem itemLabel="Homme" itemValue="H" />
+				<f:selectItem itemLabel="Femme" itemValue="F" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Dept" />
+			<h:selectOneMenu converter="deptConverter"
+				value="#{employeManagedBean.emp.departement}">
+				<f:selectItem itemValue="#{null}" itemLabel="--Sélectionner--" />
+				<f:selectItems value="#{employeManagedBean.departements}" var="d"
+					itemLabel="#{d.nom}" itemValue="#{d}" />
+			</h:selectOneMenu>
+			<h:outputLabel value="#{myDicEn.e}" />
+			<h:inputText id="emailId" value="#{employeManagedBean.emp.email}">
+				<f:validator validatorId="emailValidator" />
+			</h:inputText>
+			<h:message for="emailId" style="color:red" />
+			<h:commandButton action="#{employeManagedBean.enregistrerEmploye()}"
+				value="Enregistrer">
+			</h:commandButton>
+		</h:panelGrid>
+	</h:form>
+	<h:form id="form2">
+		<p:dataTable value="#{employeManagedBean.employes}" var="e">
+			<p:column headerText="#{myDicEn.n}">
+				<h:outputText value="#{e.nomEmploye}" />
+			</p:column>
+			<p:column headerText="#{myDicEn.p}">
+				<h:outputText value="#{e.prenomEmploye}" />
+			</p:column>
+			<p:column headerText="Action">
+				<h:commandButton action="#{employeManagedBean.supprimerEmploye(e)}"
+					value="Supprimer" />
+				<h:commandButton action="#{employeManagedBean.edit(e)}"
+					value="Editer" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
