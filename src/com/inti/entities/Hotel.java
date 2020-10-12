@@ -13,10 +13,10 @@ import javax.persistence.OneToMany;
 @Entity
 public class Hotel implements Serializable {
 
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private static final long serialVersionUID = 1L;
 	private Long idHotel;
 	private String Nom;
 	private int nbEtoile;
