@@ -26,6 +26,12 @@ public class Hotel implements Serializable {
 	private Set<Destination> destinations=new HashSet<>();
 	@OneToMany(mappedBy="avis")
 	private Set<Avis> avis=new HashSet<>();
+	
+	
+	
+	public Hotel() {
+		super();
+	}
 	public Hotel(String nom, int nbEtoile, Set<Reservation> reservations, Set<Destination> destinations,
 			Set<Avis> avis) {
 		super();

@@ -18,7 +18,7 @@ public class Reservation implements Serializable{
 	int nbJours;
 
 	@ManyToOne
-	private Set<Yoyageur> voyageur=new HashSet<>();
+	private Set<Voyageur> voyageur=new HashSet<>();
 	@ManyToOne
 	private Set<Hotel> hotel=new HashSet<>();
 	

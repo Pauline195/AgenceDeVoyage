@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class Yoyageur implements Serializable{
+public class Voyageur implements Serializable{
 	
 	long idVoyageur;
 	String nom;
@@ -15,7 +15,7 @@ public class Yoyageur implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private  static  final  long serialVersionUID = 1L;
-	public Yoyageur(long idVoyageur, String nom, String prenom, int age) {
+	public Voyageur(long idVoyageur, String nom, String prenom, int age) {
 		super();
 		this.idVoyageur = idVoyageur;
 		this.nom = nom;
